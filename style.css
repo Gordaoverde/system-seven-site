@@ -526,6 +526,198 @@ section h2 {
     transform: translateY(-4px);
 }
 
+#faq {
+    padding: 80px 10%;
+    text-align: center;
+}
+
+.intro-faq {
+    max-width: 600px;
+    margin: 0 auto 40px;
+    color: #ccc;
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.faq-item {
+    border-bottom: 1px solid #222;
+}
+
+.faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 20px 0;
+    font-size: 1.1rem;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.faq-question:hover {
+    color: #25D366;
+}
+
+.faq-question .icon {
+    font-size: 1.4rem;
+    transition: transform 0.3s;
+}
+
+.faq-item.active .icon {
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+
+.faq-answer p {
+    padding-bottom: 20px;
+    color: #aaa;
+    line-height: 1.6;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 200px;
+}
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 58px;
+    height: 58px;
+    background: #25D366;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+    z-index: 9999;
+
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.whatsapp-float.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .whatsapp-float {
+        width: 54px;
+        height: 54px;
+        font-size: 30px;
+        bottom: 16px;
+        right: 16px;
+    }
+}
+
+/* embelezar */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Canvas das partículas */
+#particles {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+/* Conteúdo acima das partículas */
+.hero > *:not(canvas) {
+    position: relative;
+    z-index: 1;
+}
+
+/* Microinterações - Cards */
+.card {
+    position: relative;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    will-change: transform;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+        circle at top left,
+        rgba(255, 255, 255, 0.08),
+        transparent 60%
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+/* Ícones animam junto */
+.card i {
+    transition: transform 0.4s ease, color 0.4s ease;
+}
+
+.card:hover i {
+    transform: scale(1.15) rotate(3deg);
+    color: #25D366;
+}
+
+/* Clique (feedback) */
+.card:active {
+    transform: scale(0.97);
+}
+
+/* Feedback de toque no mobile */
+@media (hover: none) {
+    .card:active {
+        transform: scale(0.96);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    .btn:active,
+    .cta-btn:active {
+        transform: scale(0.95);
+    }
+}
+
+.card.touched {
+    transform: scale(0.96);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+}
+
 /* iamagens */
 
 .hero {

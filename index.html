@@ -11,7 +11,7 @@
 <body>
 
 <header>
-    <img src="assets/logo.jpeg" alt="Logo da System Seven" class="logo">
+    <img src="assets/logo.jpeg" alt="Logo da System Seven" class="logo" loading="lazy">
     <nav>
         <a href="#home">Início</a>
         <a href="#sobre">Sobre</a>
@@ -22,6 +22,7 @@
 <main>
     <!-- HOME -->
     <section id="home" class="hero">
+        <canvas id="particles"></canvas>
         <h1 class="reveal">System Seven</h1>
 
         <p class="slogan reveal delay-1">
@@ -53,7 +54,7 @@
             </div>
 
             <div class="sobre-imagem reveal delay-2">
-                <img src="assets/sobre-tech.jpg" alt="Tecnologia e inovação">
+                <img src="assets/sobre-tech.jpg" alt="Tecnologia e inovação" loading="lazy">
             </div>
 
         </div>
@@ -298,7 +299,7 @@
 
                     <div class="equipe-card">
                         <div class="foto-container">
-                            <img src="assets/equipe/pessoa1.jpeg" alt="Nome 1">
+                            <img src="assets/equipe/pessoa1.jpeg" alt="Nome 1" loading="lazy">
                             <span class="nome">Matheus</span>
                         </div>
                         <p class="cargo">Socio/ Diretor Comercial e Presidente</p>
@@ -306,7 +307,7 @@
 
                     <div class="equipe-card">
                         <div class="foto-container">
-                            <img src="assets/equipe/pessoa2.jpeg" alt="Nome 2">
+                            <img src="assets/equipe/pessoa2.jpeg" alt="Nome 2" loading="lazy">
                             <span class="nome">João Pedro</span>
                         </div>
                         <p class="cargo">Socio/ Diretor de equipe e Desenvolvedor Full Stack</p>
@@ -314,7 +315,7 @@
 
                     <div class="equipe-card">
                         <div class="foto-container">
-                            <img src="assets/equipe/pessoa3.png" alt="Nome 3">
+                            <img src="assets/equipe/pessoa3.png" alt="Nome 3" loading="lazy">
                             <span class="nome">Emanuel</span>
                         </div>
                         <p class="cargo">Programador Softwares, sistemas em Python e apps.</p>
@@ -322,7 +323,7 @@
 
                     <div class="equipe-card">
                         <div class="foto-container">
-                            <img src="assets/equipe/pessoa4.png" alt="Nome 4">
+                            <img src="assets/equipe/pessoa4.png" alt="Nome 4" loading="lazy">
                             <span class="nome">Marcos</span>
                         </div>
                         <p class="cargo">Programador Sistemas Web, Sites e projetos HTML/CSS.</p>
@@ -332,6 +333,70 @@
             </div>
 
             <button class="equipe-btn next">&#10095;</button>
+        </div>
+    </section>
+
+    <section id="faq">
+        <h2 class="reveal">Perguntas Frequentes</h2>
+
+        <p class="intro-faq reveal delay-1">
+            Tiramos aqui as principais dúvidas sobre nossos serviços e como trabalhamos.
+        </p>
+
+        <div class="faq-container reveal delay-2">
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    Quanto custa um site ou sistema?
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        O valor varia conforme o tipo de projeto, funcionalidades e nível de personalização.
+                        Trabalhamos com soluções sob medida, sempre buscando o melhor custo-benefício.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    Quanto tempo leva para desenvolver um projeto?
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        O prazo depende da complexidade do projeto. Sites institucionais podem levar
+                        poucas semanas, enquanto sistemas mais completos exigem um planejamento maior.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    Vocês oferecem suporte após a entrega?
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Sim. Após a entrega, oferecemos suporte para ajustes, melhorias e acompanhamento
+                        da solução, garantindo seu funcionamento adequado.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    Posso solicitar mudanças depois do projeto pronto?
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Claro. Trabalhamos com evolução contínua. Novas funcionalidades,
+                        ajustes e melhorias podem ser solicitados a qualquer momento.
+                    </p>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -359,7 +424,7 @@
     <div class="footer-container">
 
         <div class="footer-col">
-            <img src="assets/logo.jpeg" alt="System Seven" class="footer-logo">
+            <img src="assets/logo.jpeg" alt="System Seven" class="footer-logo" loading="lazy">
             <p>
                 Desenvolvimento de software, sistemas e soluções tecnológicas
                 focadas no futuro das empresas.
@@ -406,5 +471,13 @@
     </div>
 </footer>
 <script src="script.js"></script>
+
+<a href="https://wa.me/553198023414?text=Olá!%20Gostaria%20de%20um%20orçamento%20com%20a%20System%20Seven."
+   class="whatsapp-float"
+   target="_blank"
+   aria-label="Falar no WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+</a>
+
 </body>
 </html>
