@@ -391,6 +391,141 @@ section h2 {
     }
 }
 
+#equipe {
+    padding: 80px 10%;
+    text-align: center;
+}
+
+.intro-equipe {
+    max-width: 600px;
+    margin: 0 auto 40px;
+    color: #ccc;
+}
+
+.equipe-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.equipe-carousel {
+    overflow: hidden;
+    width: 100%;
+}
+
+.equipe-track {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.equipe-card {
+    min-width: 50%;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.foto-container {
+    position: relative;
+    width: 100%; /* <<< MUITO IMPORTANTE */
+    aspect-ratio: 3 / 4;
+    border-radius: 16px;
+    overflow: hidden;
+    background-color: #111;
+    margin: 0 auto;
+}
+
+/* IMAGEM */
+.foto-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    position: relative;
+    z-index: 1;
+}
+
+/* NOME SOBRE A FOTO */
+.nome {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    padding: 14px;
+
+    background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.85),
+        rgba(0,0,0,0)
+    );
+
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.05rem;
+    text-align: center;
+
+    z-index: 2; /* <<< ISSO FAZ APARECER */
+}
+
+.cargo {
+    margin-top: 12px;
+    color: #aaa;
+    font-size: 0.95rem;
+}
+
+.equipe-btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+    padding: 10px;
+    transition: color 0.3s;
+}
+
+.equipe-btn:hover {
+    color: #25D366;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .equipe-card {
+        min-width: 100%;
+    }
+}
+
+/* Hover geral do card */
+.equipe-card:hover .foto-container img {
+    transform: scale(1.08);
+}
+
+/* Transição suave da imagem */
+.foto-container img {
+    transition: transform 0.6s ease;
+}
+
+/* Gradiente mais forte no hover */
+.equipe-card:hover .nome {
+    background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.95),
+        rgba(0,0,0,0.2)
+    );
+}
+
+/* Nome com leve animação */
+.nome {
+    transition: background 0.4s ease, transform 0.4s ease;
+}
+
+.equipe-card:hover .nome {
+    transform: translateY(-4px);
+}
+
 /* iamagens */
 
 .hero {
