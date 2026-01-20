@@ -182,56 +182,14 @@ if (canvas) {
 /* =======================
    MICROINTERAÇÕES TOUCH
 ======================= */
-const touchCards = document.querySelectorAll('.card');
-
-touchCards.forEach(card => {
-    card.addEventListener('touchstart', () => {
-        card.classList.add('touched');
-    });
-
-    card.addEventListener('touchend', () => {
-        setTimeout(() => {
-            card.classList.remove('touched');
-        }, 150);
-    });
-});
-
-/* =======================
-   WHATSAPP FLUTUANTE (FINAL)
-======================= */
 const whatsappBtn = document.querySelector('.whatsapp-float');
-const footer = document.querySelector('footer');
 
-function handleWhatsappVisibility() {
-    if (!whatsappBtn || !footer) return;
-
-    const scrollY = window.scrollY;
-    const windowHeight = window.innerHeight;
-    const footerTop = footer.offsetTop;
-
-    // Mostra após rolar
-    if (scrollY > 300) {
-        whatsappBtn.classList.add('show');
-    } else {
-        whatsappBtn.classList.remove('show');
-    }
-
-    // Esconde somente ao chegar no footer
-    if (scrollY + windowHeight >= footerTop - 100) {
-        whatsappBtn.classList.add('hide');
-    } else {
-        whatsappBtn.classList.remove('hide');
-    }
+if (whatsappBtn) {
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 200) {
+            whatsappBtn.style.transform = 'scale(1)';
+        } else {
+            whatsappBtn.style.transform = 'scale(0.85)';
+        }
+    });
 }
-
-window.addEventListener('scroll', handleWhatsappVisibility);
-window.addEventListener('load', handleWhatsappVisibility);
-
-window.addEventListener('load', () => {
-    const btn = document.querySelector('.whatsapp-float');
-    console.log('Botão:', btn);
-
-    if (btn) {
-        btn.classList.add('show');
-    }
-});
