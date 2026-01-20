@@ -2,6 +2,17 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VG1DJ8STDY"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-VG1DJ8STDY');
+    </script>
+
     <title>System Seven | Desenvolvimento de Sistemas, Sites e Software</title>
     <meta name="description" content="A System Seven é especializada em desenvolvimento de sistemas, criação de sites e soluções tecnológicas sob medida. Inovação, tecnologia e foco no futuro das empresas.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -476,7 +487,11 @@
 <a href="https://wa.me/553198023414?text=Olá!%20Gostaria%20de%20um%20orçamento%20com%20a%20System%20Seven."
    class="whatsapp-float"
    target="_blank"
-   aria-label="Falar no WhatsApp">
+   aria-label="Falar no WhatsApp"
+   onclick="gtag('event', 'click_whatsapp', {
+        'event_category': 'Contato',
+        'event_label': 'Botão Flutuante'
+   });">
     <i class="fa-brands fa-whatsapp"></i>
 </a>
 
