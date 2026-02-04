@@ -45,7 +45,6 @@ function updateCarousel() {
 function nextSlide() {
     const maxIndex = cards.length - getCardsPerView();
     index++;
-
     if (index > maxIndex) index = 0;
     updateCarousel();
 }
@@ -53,7 +52,6 @@ function nextSlide() {
 function prevSlide() {
     const maxIndex = cards.length - getCardsPerView();
     index--;
-
     if (index < 0) index = maxIndex;
     updateCarousel();
 }
@@ -178,18 +176,185 @@ if (canvas) {
     initParticles();
     animateParticles();
 }
-
 /* =======================
-   MICROINTERAÇÕES TOUCH
+   CHATBOT SYSTEM SEVEN PRO
 ======================= */
-const whatsappBtn = document.querySelector('.whatsapp-float');
 
-if (whatsappBtn) {
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 200) {
-            whatsappBtn.style.transform = 'scale(1)';
-        } else {
-            whatsappBtn.style.transform = 'scale(0.85)';
+document.addEventListener('DOMContentLoaded', () => {
+
+    const chatToggle = document.getElementById('chat-toggle');
+    const chatBot = document.getElementById('chatbot');
+    const chatClose = document.getElementById('chat-close');
+    const chatBody = document.getElementById('chat-body');
+
+    const whatsapp = 'https://wa.me/553198023414?text=';
+    let userName ='';
+    let soundUnlocked = false;
+
+    /* ===== SOM ===== */
+    function unlockSound() {
+        const sound = document.getElementById('chat-sound');
+        if (!sound || soundUnlocked) return;
+
+        sound.play().then(() => {
+            sound.pause();
+            sound.currentTime = 0;
+            soundUnlocked = true;
+        }).catch(() => {});
+    }
+
+    function playChatSound() {
+        if (!soundUnlocked) return;
+        const sound = document.getElementById('chat-sound');
+        if (sound) {
+            sound.currentTime = 0;
+            sound.play().catch(() => {});
         }
-    });
-}
+    }
+
+    if (!chatToggle || !chatBot) return;
+
+    chatToggle.onclick = () => {
+        unlockSound(); // 🔓 DESBLOQUEIA NO CLIQUE
+        chatBot.classList.add('active');
+        if (!chatBody.innerHTML) startChat();
+    };
+
+    chatClose.onclick = () => chatBot.classList.remove('active');
+
+    function isBusinessHours() {
+        const hour = new Date().getHours();
+        return hour >= 9 && hour < 18;
+    }
+
+    /* ===== DIGITANDO ===== */
+    function botTyping(cb) {
+        const typing = document.createElement('div');
+        typing.className = 'chat-message bot typing';
+        typing.innerText = 'Digitando...';
+        chatBody.appendChild(typing);
+        chatBody.scrollTop = chatBody.scrollHeight;
+
+        setTimeout(() => {
+            typing.remove();
+            cb();
+        }, 900);
+    }
+
+    function bot(text, callback) {
+        clearOptions(); // 👈 GARANTE ORDEM VISUAL
+        botTyping(() => {
+            const msg = document.createElement('div');
+            msg.className = 'chat-message bot';
+            msg.innerText = text;
+            chatBody.appendChild(msg);
+            playChatSound();
+            chatBody.scrollTop = chatBody.scrollHeight;
+
+            if (callback) callback();
+        });
+    }
+
+    /* ===== OPÇÕES ===== */
+    function options(list) {
+        const box = document.createElement('div');
+        box.className = 'chat-options';
+
+        list.forEach((o, i) => {
+            const btn = document.createElement('button');
+            btn.className = 'chat-option';
+            btn.innerText = o.text;
+            btn.style.animationDelay = `${i * 0.08}s`;
+            btn.onclick = o.action;
+            box.appendChild(btn);
+        });
+
+        chatBody.appendChild(box);
+        chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    function clearOptions() {
+        document.querySelectorAll('.chat-options').forEach(e => e.remove());
+    }
+
+    function openWA(msg) {
+        window.open(whatsapp + encodeURIComponent(msg), '_blank');
+    }
+
+    function startChat() {
+        if (!userName) {
+            bot('Olá! 👋 Qual é o seu nome?', askName);
+        } else {
+            mainMenu();
+        }
+    }
+
+    function askName() {
+        const input = document.createElement('input');
+        input.placeholder = 'Digite seu nome...';
+        input.className = 'chat-input-name';
+
+        input.onkeypress = e => {
+            if (e.key === 'Enter' && input.value.trim()) {
+                userName = input.value.trim();
+                input.remove();
+                bot(`Prazer, ${userName}! 😊`, mainMenu);
+            }
+        };
+
+        chatBody.appendChild(input);
+    }
+
+    /* ===== MENUS ===== */
+
+    function mainMenu() {
+        bot(`Como posso te ajudar${userName ? ', ' + userName : ''}?`, () => {
+            options([
+                { text: '🌐 Criar site', action: siteMenu },
+                { text: '🖥️ Desenvolver sistema', action: systemMenu },
+                { text: '💰 Solicitar orçamento', action: budgetMenu },
+                { text: '📲 Falar no WhatsApp', action: () =>
+                    openWA(`Olá! Meu nome é ${userName} e gostaria de falar com um especialista da System Seven.`)
+                }
+            ]);
+        });
+    }
+
+    function siteMenu() {
+        bot('Nos explique melhor como quer seu site:', () => {
+            options([
+                { text: '📰 Site informativo', action: () => openWA(`Olá! Sou ${userName} e quero um site informativo.`) },
+                { text: '🏢 Site empresarial', action: () => openWA(`Olá! Sou ${userName} e quero um site empresarial.`) },
+                { text: '⚙️ Site complexo', action: () => openWA(`Olá! Sou ${userName} e preciso de um site complexo.`) },
+                { text: '⬅️ Voltar', action: mainMenu }
+            ]);
+        });
+    }
+
+    function systemMenu() {
+        bot('Qual tipo de sistema você precisa?', () => {
+            options([
+                { text: '📞 Sistema de atendimento', action: () => openWA(`Olá! Sou ${userName} e preciso de um sistema de atendimento.`) },
+                { text: '💳 Sistema de cobrança', action: () => openWA(`Olá! Sou ${userName} e preciso de um sistema de cobrança.`) },
+                { text: '🧾 Sistema de orçamento', action: () => openWA(`Olá! Sou ${userName} e preciso de um sistema de orçamento.`) },
+                { text: '⚙️ Outro tipo de sistema', action: () => openWA(`Olá! Sou ${userName} e preciso de um sistema personalizado.`) },
+                { text: '⬅️ Voltar', action: mainMenu }
+            ]);
+        });
+    }
+
+    function budgetMenu() {
+        bot(
+            isBusinessHours()
+                ? 'Estamos em horário comercial 👍 Qual orçamento deseja?'
+                : 'Estamos fora do horário comercial 😴 Mas pode deixar sua solicitação!',
+            () => {
+                options([
+                    { text: '🌐 Site', action: siteMenu },
+                    { text: '🖥️ Sistema', action: systemMenu },
+                    { text: '⬅️ Voltar', action: mainMenu }
+                ]);
+            }
+        );
+    }
+});

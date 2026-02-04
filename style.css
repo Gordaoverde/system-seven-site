@@ -589,44 +589,145 @@ section h2 {
     max-height: 200px;
 }
 
-.whatsapp-float {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    width: 58px;
-    height: 58px;
-    background: #25D366;
-    color: #fff;
-    border-radius: 50%;
+/*colocar chat*/
+
+#chat-toggle {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 58px;
+  height: 58px;
+  background: #25D366;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  cursor: pointer;
+  z-index: 9999;
+  box-shadow: 0 8px 25px rgba(0,0,0,.4);
+}
+
+#chatbot {
+  position: fixed;
+  bottom: 95px;
+  right: 20px;
+  width: 300px;
+  background: #0f172a;
+  border-radius: 16px;
+  overflow: hidden;
+  display: none;
+  z-index: 9999;
+  box-shadow: 0 20px 40px rgba(0,0,0,.6);
+}
+
+#chat-header {
+  background: linear-gradient(135deg, #25D366, #1ebe5d);
+  color: #fff;
+  padding: 12px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+}
+
+#chat-close {
+  cursor: pointer;
+}
+
+#chat-body {
+  height: 240px;
+  padding: 12px;
+  overflow-y: auto;
+  font-size: 14px;
+  color: #e5e7eb;
+}
+
+#chat-footer input {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  outline: none;
+}
+
+#chatbot.active {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 32px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.35);
-    z-index: 9999;
+    flex-direction: column;
+}
 
-    /* VISÍVEL POR PADRÃO */
+.chat-options {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+  animation: optionsFade 0.4s ease forwards;
+}
+
+.chat-option {
+  background: #1e293b;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform .2s, opacity .2s;
+  transform: translateY(8px);
+}
+
+.chat-option:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+  background: #25D366;
+  color: #000;
+}
+
+.chat-message.bot {
+  margin-bottom: 6px;
+}
+
+.chat-input-name {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+}
+
+.msg {
+  margin-bottom: 10px;
+}
+
+.bot { color: #25D366; }
+.user { text-align: right; }
+
+.btn-human {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 6px 10px;
+  background: #25D366;
+  color: #fff;
+  border-radius: 8px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+@keyframes optionsFade {
+  from {
+    opacity: 0;
+  }
+  to {
     opacity: 1;
-    transform: scale(1);
-
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
-}
-/* Hover */
-.whatsapp-float:hover {
-    transform: scale(1.1);
+  }
 }
 
-/* Mobile */
-@media (max-width: 768px) {
-    .whatsapp-float {
-        width: 54px;
-        height: 54px;
-        font-size: 30px;
-        bottom: 16px;
-        right: 16px;
-    }
+@keyframes optionItem {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-
 /* embelezar */
 
 .hero {

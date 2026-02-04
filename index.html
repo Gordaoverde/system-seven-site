@@ -484,15 +484,28 @@
 </footer>
 <script src="script.js"></script>
 
-<a href="https://wa.me/553198023414?text=Olá!%20Gostaria%20de%20um%20orçamento%20com%20a%20System%20Seven."
-   class="whatsapp-float"
-   target="_blank"
-   aria-label="Falar no WhatsApp"
-   onclick="gtag('event', 'click_whatsapp', {
-        'event_category': 'Contato',
-        'event_label': 'Botão Flutuante'
-   });">
-    <i class="fa-brands fa-whatsapp"></i>
-</a>
+<!-- BOTÃO DO CHAT -->
+<div id="chat-toggle">
+  <i class="fa-solid fa-comment-dots"></i>
+</div>
+
+<!-- CHAT -->
+<div id="chatbot">
+  <div id="chat-header">
+    Atendimento System Seven
+    <span id="chat-close">×</span>
+  </div>
+
+  <div id="chat-body"></div>
+
+  <div id="chat-footer">
+    <input id="chat-input" placeholder="Digite sua mensagem..." />
+  </div>
+  
+<audio id="chat-sound" preload="auto">
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5c76e9b92c.mp3" type="audio/mpeg">
+</audio>
+
+</div>
 </body>
 </html>
