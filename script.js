@@ -290,19 +290,42 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function askName() {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'chat-name-wrapper';
+
         const input = document.createElement('input');
         input.placeholder = 'Digite seu nome...';
         input.className = 'chat-input-name';
+        input.type = 'text';
 
-        input.onkeypress = e => {
-            if (e.key === 'Enter' && input.value.trim()) {
-                userName = input.value.trim();
-                input.remove();
-                bot(`Prazer, ${userName}! 😊`, mainMenu);
-            }
-        };
+        const btn = document.createElement('button');
+        btn.innerText = 'Enviar';
+        btn.className = 'chat-send-name';
 
-        chatBody.appendChild(input);
+        function submitName() {
+            if (!input.value.trim()) return;
+
+            userName = input.value.trim();
+            wrapper.remove();
+
+            bot(`Prazer, ${userName}! 😊`, () => {
+                mainMenu();
+            });
+        }
+
+        // Enter no desktop e mobile
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') submitName();
+        });
+
+        // Clique no botão (mobile)
+        btn.onclick = submitName;
+
+        wrapper.appendChild(input);
+        wrapper.appendChild(btn);
+        chatBody.appendChild(wrapper);
+
+        input.focus();
     }
 
     /* ===== MENUS ===== */
