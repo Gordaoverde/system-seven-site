@@ -400,8 +400,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (hero) {
         const msg = document.createElement("p");
         msg.className = "womens-day-message";
-        msg.innerText = "Esse mês celebramos todas as mulheres que constroem, lideram e inovam. 💜";
+        msg.innerText = "Está chegando o dia em que celebramos todas as mulheres que constroem, lideram e inovam. 💜";
         hero.appendChild(msg);
     }
+
 
 });
