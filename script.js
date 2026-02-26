@@ -381,3 +381,27 @@ document.addEventListener('DOMContentLoaded', () => {
         );
     }
 });
+
+/* =========================
+   ATIVA DIA DA MULHER AGORA
+========================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    // Ativa classe especial
+    document.body.classList.add("womens-day-active");
+
+    // Mostra banner
+    const banner = document.getElementById("womens-day-banner");
+    if (banner) banner.style.display = "block";
+
+    // Adiciona mensagem no hero
+    const hero = document.querySelector(".hero");
+    if (hero) {
+        const msg = document.createElement("p");
+        msg.className = "womens-day-message";
+        msg.innerText = "Esse mês celebramos todas as mulheres que constroem, lideram e inovam. 💜";
+        hero.appendChild(msg);
+    }
+
+});

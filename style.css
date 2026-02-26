@@ -744,6 +744,7 @@ section h2 {
     transform: translateY(0);
   }
 }
+
 /* embelezar */
 
 .hero {
@@ -935,3 +936,102 @@ section h2 {
 .delay-2 { transition-delay: 0.2s; }
 .delay-3 { transition-delay: 0.3s; }
 .delay-4 { transition-delay: 0.4s; }
+
+/* =========================
+   DIA DA MULHER
+========================= */
+
+#womens-day-banner {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: linear-gradient(90deg, #7c3aed, #ec4899);
+  color: white;
+  text-align: center;
+  padding: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  z-index: 10000;
+  display: none;
+}
+
+/* Ajusta o header quando banner estiver ativo */
+.womens-day-active header {
+  margin-top: 36px;
+}
+
+/* Mudança sutil de cores */
+.womens-day-active .btn,
+.womens-day-active .cta-btn {
+  background: linear-gradient(135deg, #7c3aed, #ec4899);
+}
+
+.womens-day-active .service-icon,
+.womens-day-active .diferencial-icon {
+  color: #ec4899;
+}
+
+/* Hero especial */
+.womens-day-message {
+  color: #ec4899;
+  font-weight: 600;
+  margin-top: 10px;
+  font-size: 18px;
+  animation: fadeIn 1.5s ease;
+}
+.womens-day-active .btn,
+.womens-day-active .cta-btn,
+.womens-day-active button {
+  background: linear-gradient(135deg, #7c3aed, #ec4899);
+  border: none;
+  transition: all 0.4s ease;
+}
+
+.womens-day-active .btn:hover,
+.womens-day-active .cta-btn:hover,
+.womens-day-active button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(236, 72, 153, 0.4);
+}
+
+/* =========================
+   PARTÍCULAS DIA DA MULHER
+========================= */
+
+.womens-particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.womens-particles::before,
+.womens-particles::after {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background-image: radial-gradient(circle, rgba(236,72,153,0.25) 2px, transparent 3px);
+  background-size: 60px 60px;
+  animation: particlesMove 20s linear infinite;
+}
+
+.womens-particles::after {
+  background-image: radial-gradient(circle, rgba(124,58,237,0.25) 2px, transparent 3px);
+  animation-duration: 30s;
+}
+
+@keyframes particlesMove {
+  from { transform: translateY(0); }
+  to { transform: translateY(-300px); }
+}
+
+/* Garante que o site fique por cima */
+header, section, footer {
+  position: relative;
+  z-index: 2;
+}
